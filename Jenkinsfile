@@ -72,7 +72,7 @@ pipeline {
                         bat '''
                             if not exist "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\angular" mkdir "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\angular"
 
-                            robocopy "%WORKSPACE%\\angular\\dist" "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\angular" /E
+                            robocopy "%WORKSPACE%\\angular" "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\angular" /E
 
                             if %ERRORLEVEL% LEQ 7 exit /B 0
                             exit /B %ERRORLEVEL%
