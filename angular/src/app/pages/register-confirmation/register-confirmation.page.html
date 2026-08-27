@@ -1,0 +1,27 @@
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-md w-full space-y-8">
+        <div>
+            <h2 class="f-title text-center">
+                Vérification de l'inscription
+            </h2>
+            <p class="mt-4 text-sm text-gray-600 text-center">
+                Un email de vérification a été envoyé à votre adresse. Cliquez sur le lien dans le message pour activer
+                votre compte.
+            </p>
+            <p class="mt-2 text-sm text-gray-500 text-center">
+                En attente de confirmation. Vérifiez votre boîte de réception et vos spams.
+            </p>
+        </div>
+
+        <div class="space-y-4">
+            <div *ngIf="successMessage()" class="c-success-message">
+                {{ successMessage() }}
+            </div>
+
+            <button type="button" class="btn-primary w-full" [disabled]="isResending()"
+                (click)="onResendVerificationEmail()">
+                {{ isResending() ? 'Renvoi en cours…' : 'Renvoyer l’email de vérification' }}
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+.btn-primary {
+  @apply py-2 px-3 text-sm rounded-lg;
+  color: var(--color-primary-foreground);
+  background-color: var(--color-primary);
+}
+
+.btn-secondary {
+  @apply py-2 px-3 text-sm rounded-lg;
+  color: var(--color-secondary-foreground);
+  background-color: var(--color-secondary);
+}
+
+.btn-danger {
+  @apply py-2 px-3 text-sm rounded-lg;
+  color: var(--color-destructive-foreground);
+  background-color: var(--color-destructive);
+}
+
+.btn-primary-transparent {
+  @apply py-2 px-3 text-sm bg-transparent rounded-lg transition-colors;
+  color: var(--color-primary);
+}
+
+.btn-primary-transparent:hover {
+  background-color: var(--color-accent);
+}

@@ -1,0 +1,46 @@
+input.ng-touched.ng-invalid,
+select.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid {
+  border: 1px solid var(--destructive);
+}
+
+.f-container {
+  @apply w-md bg-white rounded-xl;
+}
+
+.f-container form {
+  @apply space-y-4;
+}
+
+.f-title {
+  @apply text-lg font-medium;
+}
+
+.f-label {
+  @apply mb-1 text-sm text-muted-foreground font-medium block;
+}
+
+.f-label.required::after {
+  content: " *";
+  color: var(--color-destructive);
+}
+
+.f-input,
+.f-textarea {
+  @apply w-full py-1 px-2.5 border outline-0 rounded-lg;
+  border-color: var(--color-input);
+}
+
+.f-select {
+  @apply w-full py-1.5 px-2.5 border outline-0 rounded-lg;
+  border-color: var(--color-input);
+}
+
+.f-input:focus {
+  border-color: var(--color-primary);
+}
+
+.f-text-error {
+  @apply text-sm;
+  color: var(--color-destructive);
+}

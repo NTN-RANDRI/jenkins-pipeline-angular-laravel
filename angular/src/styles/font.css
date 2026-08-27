@@ -1,0 +1,52 @@
+@font-face {
+  font-family: 'Petit Formal Script';
+  src: url('/fonts/PetitFormalScript-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: italic;
+}
+
+.petit-formal-script {
+  font-family: "Petit Formal Script", serif;
+}
+
+.roboto {
+  font-family: 'Roboto';
+}
+
+.inter {
+  font-family: 'Inter'
+}
+
+
+
+

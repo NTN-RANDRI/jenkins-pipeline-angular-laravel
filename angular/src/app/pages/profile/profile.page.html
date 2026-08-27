@@ -1,0 +1,16 @@
+<div class="page-root">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="avatar">{{ user().prenom.charAt(0) }}{{ user().nom.charAt(0) }}</div>
+            <div class="meta">
+                <h2 class="name">{{ user().prenom }} {{ user().nom }}</h2>
+                <p class="email">{{ user().email }}</p>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <a class="btn-primary" [routerLink]="['change-password']">Changer le mot de passe</a>
+            <button class="btn-danger" (click)="onLogout()">Se déconnecter</button>
+        </div>
+    </div>
+</div>
