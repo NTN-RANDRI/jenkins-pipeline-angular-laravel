@@ -6,14 +6,6 @@ pipeline {
         stage('CI') {
             stages {
 
-                stage('Clone') {
-                    steps {
-                        git branch: 'main',
-                            credentialsId: 'premier-credentials',
-                            url: 'https://github.com/NTN-RANDRI/jenkins-pipeline-angular-laravel.git'
-                    }
-                }
-
                 stage('Composer Install') {
                     steps {
                         bat '''
