@@ -25,6 +25,7 @@ pipeline {
                                     withCredentials([file(credentialsId: 'env_testing_todo', variable: 'ENV_FILE')]) {
                                         bat '''
                                             copy /Y "%ENV_FILE%" .env.testing
+                                            copy /Y .env.testing .env
                                             php artisan key:generate --env=testing
                                         '''
                                     }
