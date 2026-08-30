@@ -19,6 +19,27 @@ pipeline {
                             }
                         }
 
+                        stage('Setup Test Environment') {
+                            steps {
+                                dir('laravel') {
+                                    withCredentials([file(credentialsId: 'laravel-env-testing', variable: 'ENV_FILE')]) {
+                                        bat '''
+                                            copy /Y "%ENV_FILE%" .env.testing
+                                            php artisan key:generate --env=testing
+                                        '''
+                                    }
+                                }
+                            }
+                        }
+
+                        stage('Run Tests') {
+                            steps {
+                                dir('laravel') {
+                                    bat 'php artisan test --env=testing'
+                                }
+                            }
+                        }
+
                     }
                 }
 
