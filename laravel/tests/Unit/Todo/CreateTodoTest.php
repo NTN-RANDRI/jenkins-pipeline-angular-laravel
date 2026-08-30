@@ -16,7 +16,7 @@ class CreateTodoTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function it_creates_a_todo_and_returns_the_output_dto(): void
+    public function create_todo(): void
     {
         $user = User::create([
             'nom' => 'Doe',

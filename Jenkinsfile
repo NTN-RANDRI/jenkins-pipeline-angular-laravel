@@ -44,78 +44,78 @@ pipeline {
                     }
                 }
 
-                // stage('Angular') {
-                //     stages {
+                stage('Angular') {
+                    stages {
 
-                //         stage('NPM Install') {
-                //             steps {
-                //                 bat '''
-                //                     cd /d "%WORKSPACE%\\angular"
+                        stage('NPM Install') {
+                            steps {
+                                bat '''
+                                    cd /d "%WORKSPACE%\\angular"
 
-                //                     npm install
-                //                 '''
-                //             }
-                //         }
+                                    npm install
+                                '''
+                            }
+                        }
 
-                //         stage('Angular Build') {
-                //             steps {
-                //                 bat '''
-                //                     cd /d "%WORKSPACE%\\angular"
+                        stage('Angular Build') {
+                            steps {
+                                bat '''
+                                    cd /d "%WORKSPACE%\\angular"
 
-                //                     npm run build
-                //                 '''
-                //             }
-                //         }
+                                    npm run build
+                                '''
+                            }
+                        }
 
-                //     }
-                // }
+                    }
+                }
 
             }
         }
 
-        // stage('CD') {
-        //     stages {
+        stage('CD') {
+            stages {
 
-        //         stage('Deploy Laravel') {
-        //             steps {
-        //                 bat '''
-        //                     if not exist "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app" mkdir "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app"
+                stage('Deploy Laravel') {
+                    steps {
+                        bat '''
+                            if not exist "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app" mkdir "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app"
 
-        //                     robocopy "%WORKSPACE%\\laravel" "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\laravel" /E /XD .git /XF .env
+                            robocopy "%WORKSPACE%\\laravel" "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\laravel" /E /XD .git /XF .env
 
-        //                     if %ERRORLEVEL% LEQ 7 exit /B 0
-        //                     exit /B %ERRORLEVEL%
-        //                 '''
-        //             }
-        //         }
+                            if %ERRORLEVEL% LEQ 7 exit /B 0
+                            exit /B %ERRORLEVEL%
+                        '''
+                    }
+                }
 
-        //         stage('Deploy Angular') {
-        //             steps {
-        //                 bat '''
-        //                     if not exist "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\angular" mkdir "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\angular"
+                stage('Deploy Angular') {
+                    steps {
+                        bat '''
+                            if not exist "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\angular" mkdir "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\angular"
 
-        //                     robocopy "%WORKSPACE%\\angular" "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\angular" /E
+                            robocopy "%WORKSPACE%\\angular" "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\angular" /E
 
-        //                     if %ERRORLEVEL% LEQ 7 exit /B 0
-        //                     exit /B %ERRORLEVEL%
-        //                 '''
-        //             }
-        //         }
+                            if %ERRORLEVEL% LEQ 7 exit /B 0
+                            exit /B %ERRORLEVEL%
+                        '''
+                    }
+                }
 
-        //         stage('Laravel migration') {
-        //             steps {
-        //                 bat '''
-        //                     cd /d "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\laravel"
+                stage('Laravel migration') {
+                    steps {
+                        bat '''
+                            cd /d "D:\\BOSSY\\projet\\academique\\Jenkins\\serveur\\mon-app\\laravel"
 
-        //                     php artisan migrate --force
-        //                     php artisan config:cache
-        //                     php artisan route:cache
-        //                     php artisan view:cache
-        //                 '''
-        //             }
-        //         }
+                            php artisan migrate --force
+                            php artisan config:cache
+                            php artisan route:cache
+                            php artisan view:cache
+                        '''
+                    }
+                }
 
-        //     }
-        // }
+            }
+        }
     }
 }
