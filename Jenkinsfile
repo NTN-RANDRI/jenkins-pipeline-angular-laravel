@@ -22,7 +22,7 @@ pipeline {
                         stage('Setup Test Environment') {
                             steps {
                                 dir('laravel') {
-                                    withCredentials([file(credentialsId: 'laravel-env-testing', variable: 'ENV_FILE')]) {
+                                    withCredentials([file(credentialsId: 'env_testing_todo', variable: 'ENV_FILE')]) {
                                         bat '''
                                             copy /Y "%ENV_FILE%" .env.testing
                                             php artisan key:generate --env=testing
