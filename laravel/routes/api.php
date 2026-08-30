@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthentificationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TodoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -37,3 +38,13 @@ Route::prefix('profile')->controller(ProfileController::class)->group(function (
     Route::post('register', 'register');
     Route::post('resend-register-confirmation-email', 'resendRegisterConfirmationEmail')->middleware('auth');
 });
+
+// T O D O S
+Route::prefix('todos')->controller(TodoController::class)->middleware('auth')->group(function () {
+    Route::get('', 'index');
+    Route::post('', 'store');
+    Route::delete('clear-completed', 'clearCompleted');
+    Route::put('{id}', 'update');
+    Route::delete('{id}', 'destroy');
+});
+
