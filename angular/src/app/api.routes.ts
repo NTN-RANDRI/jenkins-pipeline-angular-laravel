@@ -8,4 +8,6 @@ export const API_ROUTES = {
     forgotPassword: `${environment.apiBaseUrl}/auth/forgot-password`,
     resetPassword: `${environment.apiBaseUrl}/auth/reset-password`,
     resendRegisterConfirmationEmail: `${environment.apiBaseUrl}/profile/resend-register-confirmation-email`,
+    todos: `${environment.apiBaseUrl}/todos`,
+    clearCompletedTodos: `${environment.apiBaseUrl}/todos/clear-completed`,
 }

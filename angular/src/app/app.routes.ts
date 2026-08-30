@@ -9,8 +9,19 @@ import { verifiedGuard } from './guards/verified.guard';
 import { notVerifiedGuard } from './guards/not-verified.guard';
 import { ChangePasswordPage } from './pages/change-password/change-password.page';
 import { ForgotPasswordPage } from './pages/forgot-password/forgot-password.page';
+import { TodoPage } from './pages/todo/todo.page';
 
 export const routes: Routes = [
+    {
+        path: '',
+        redirectTo: 'todo',
+        pathMatch: 'full'
+    },
+    {
+        path: 'todo',
+        component: TodoPage,
+        canActivate: [authGuard, verifiedGuard]
+    },
     {
         path: 'login',
         component: LoginPage
@@ -43,3 +54,4 @@ export const routes: Routes = [
         canActivate: [authGuard, verifiedGuard]
     }
 ];
+

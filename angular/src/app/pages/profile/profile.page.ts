@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ProfileFacade } from './profile.facade';
 import { AuthState } from '@/app/states/auth.state';
 import { Router, RouterLink } from '@angular/router';
@@ -7,7 +8,7 @@ import { Router, RouterLink } from '@angular/router';
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.css'],
-  imports: [RouterLink],
+  imports: [CommonModule, RouterLink],
 })
 export class ProfilePage {
 
@@ -19,16 +20,13 @@ export class ProfilePage {
 
   public onLogout() {
     this.facade.logout().subscribe({
-      next: (response) => {
-        console.log(response);
+      next: () => {
+        this.router.navigate(['/login']);
+      },
+      error: () => {
         this.router.navigate(['/login']);
       }
-    })
-  }
-
-  public onChangePassword() {
-    console.log('Change password clicked');
-    alert('Ouvrir le formulaire de changement de mot de passe');
+    });
   }
 
 }

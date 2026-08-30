@@ -1,16 +1,139 @@
 <div class="page-root">
-    <div class="profile-card">
-        <div class="profile-header">
-            <div class="avatar">{{ user().prenom.charAt(0) }}{{ user().nom.charAt(0) }}</div>
-            <div class="meta">
-                <h2 class="name">{{ user().prenom }} {{ user().nom }}</h2>
-                <p class="email">{{ user().email }}</p>
-            </div>
-        </div>
+  <div class="ambient-sphere ambient-top"></div>
+  <div class="ambient-sphere ambient-bottom"></div>
 
-        <div class="profile-actions">
-            <a class="btn-primary" [routerLink]="['change-password']">Changer le mot de passe</a>
-            <button class="btn-danger" (click)="onLogout()">Se déconnecter</button>
-        </div>
+  <div class="profile-card">
+    <!-- Header Banner -->
+    <div class="profile-banner">
+      <div class="banner-gradient"></div>
+      <div class="banner-pattern"></div>
     </div>
-</div>
+
+    <!-- Main Content -->
+    <div class="profile-body">
+      <!-- Avatar Section with Online/Active Badge -->
+      <div class="avatar-container">
+        <div class="avatar-ring">
+          <div class="avatar">
+            @if (user()?.prenom && user()?.nom) {
+              <span>{{ user().prenom.charAt(0).toUpperCase() }}{{ user().nom.charAt(0).toUpperCase() }}</span>
+            } @else {
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
+            }
+          </div>
+        </div>
+        <div class="status-badge" title="Compte actif">
+          <span class="status-dot"></span>
+        </div>
+      </div>
+
+      <!-- Identity Header -->
+      <div class="profile-header-info">
+        <h1 class="user-fullname">
+          {{ user()?.prenom }} {{ user()?.nom }}
+        </h1>
+        <p class="user-email">
+          <svg class="w-4 h-4 text-gray-400 inline shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <span>{{ user()?.email }}</span>
+        </p>
+        <div class="badges-row">
+          <span class="pill pill-success">
+            <svg class="w-3.5 h-3.5 mr-1 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            Compte vérifié
+          </span>
+          <span class="pill pill-neutral">
+            Membre
+          </span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Profile Information Grid -->
+      <div class="info-section">
+        <h2 class="section-heading">Informations personnelles</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Prénom</span>
+            <span class="info-value">{{ user()?.prenom || '—' }}</span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Nom</span>
+            <span class="info-value">{{ user()?.nom || '—' }}</span>
+          </div>
+
+          <div class="info-item full-width">
+            <span class="info-label">Adresse email</span>
+            <span class="info-value email-value">{{ user()?.email || '—' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Quick Actions -->
+      <div class="actions-section">
+        <h2 class="section-heading">Paramètres & Sécurité</h2>
+        <div class="actions-list">
+          <a routerLink="/todo" class="action-card">
+            <div class="action-left">
+              <div class="action-icon-wrapper icon-blue">
+                <svg class="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
+              </div>
+              <div>
+                <span class="action-title">Mes Tâches (TaskFlow)</span>
+                <span class="action-desc">Accéder à votre liste de tâches</span>
+              </div>
+            </div>
+            <svg class="action-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+
+          <a [routerLink]="['change-password']" class="action-card">
+            <div class="action-left">
+              <div class="action-icon-wrapper icon-blue">
+                <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                </svg>
+              </div>
+              <div>
+                <span class="action-title">Mot de passe</span>
+                <span class="action-desc">Modifier votre mot de passe de connexion</span>
+              </div>
+            </div>
+            <svg class="action-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+
+          <button (click)="onLogout()" class="action-card action-card-danger">
+            <div class="action-left">
+              <div class="action-icon-wrapper icon-red">
+                <svg class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+              </div>
+              <div>
+                <span class="action-title text-red-600">Se déconnecter</span>
+                <span class="action-desc text-red-400">Fermer votre session active</span>
+              </div>
+            </div>
+            <svg class="action-arrow text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
